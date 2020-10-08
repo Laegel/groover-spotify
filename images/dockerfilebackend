@@ -1,0 +1,14 @@
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+
+COPY ./app /app
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt .
+
+ADD crontab /etc/cron.d/fetch
+RUN chmod 0644 /etc/cron.d/fetch
+
+RUN apt-get update
+RUN apt-get install cron -y
+RUN cron

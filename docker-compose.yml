@@ -1,0 +1,30 @@
+version: '3'
+services:
+  backend:
+    build: 
+      dockerfile: ./images/dockerfilebackend
+      context: .
+    ports: 
+      - 5000:80
+    env_file:
+      - database.env
+    environment: 
+      MODULE_NAME: grooverspotify.main
+      CLIENT_ID: XXX # Change me
+      CLIENT_SECRET: XXX # Change me too!
+    depends_on:
+      - database
+    volumes:
+      - package:/app/package
+  database:
+    image: postgres
+    ports:
+      - 5432:5432
+    env_file:
+      - database.env
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+
+volumes: 
+  database-data:
+  package:
