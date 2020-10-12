@@ -30,9 +30,14 @@ git clone git@github.com:Laegel/groover-spotify.git
 
 In docker-compose.yml, replace "XXX" placeholders with the real credentials.
 
-### 4) Run the containers
+### 4) Build the backend image and run the containers
 
-At the root of the repository, execute:
+At the root of the repository, to build the image, execute:
+
+```sh
+docker-compose build
+```
+ then:
 ```sh
 docker-compose up -d
 ```
