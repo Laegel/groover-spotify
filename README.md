@@ -23,7 +23,7 @@ Or just follow [this guide](https://websiteforstudents.com/how-to-install-docker
 ### 2) Clone the repository
 
 ```sh
-git clone 
+git clone git@github.com:Laegel/groover-spotify.git
 ```
 
 ### 3) Spotify app credentials
@@ -37,4 +37,9 @@ At the root of the repository, execute:
 docker-compose up -d
 ```
 
-Latest releases are fetched once at startup then periodically (once every 12 hours) with a cron job.
+Latest releases are fetched once at startup then periodically (once every 12 hours) with a cron job. At least, it should have worked but cron jobs and Docker don't seem to work well.
+To fetch releases manually, run:
+
+```sh
+docker exec -it groover-spotify_backend python -m grooverspotify.fetch_releases
+```
